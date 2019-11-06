@@ -3,6 +3,7 @@ package co.uk.safebear.utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -22,13 +23,26 @@ public class Driver {
 
     public static WebDriver getDriver(){
 
+        ChromeOptions options = new ChromeOptions();
+
         switch (BROWSERNAME.toUpperCase()){
             case "CHROME":
 
                 System.out.println("Executing on CHROME");
 
+                options.addArguments("start-maximized");
+
                 WebDriverManager.chromedriver().setup();
-                return new ChromeDriver();
+                return new ChromeDriver(options);
+
+            case "CHROME-HEADLESS":
+
+                System.out.println("Executing on CHROME");
+
+                options.addArguments("headless");
+
+                WebDriverManager.chromedriver().setup();
+                return new ChromeDriver(options);
 
             case "IE":
 
@@ -37,7 +51,7 @@ public class Driver {
                 WebDriverManager.iedriver().setup();
                 return new InternetExplorerDriver();
 
-            case "Firefox":
+            case "FIREFOX":
 
                 System.out.println("Executing on FireFox");
 
