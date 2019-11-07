@@ -37,6 +37,8 @@ public class Driver {
 
             case "CHROME-HEADLESS":
 
+                // hello
+
                 System.out.println("Executing on CHROME");
 
                 options.addArguments("headless");
