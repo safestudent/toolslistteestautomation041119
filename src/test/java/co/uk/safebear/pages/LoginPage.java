@@ -1,9 +1,11 @@
 package co.uk.safebear.pages;
 
 import co.uk.safebear.pages.Locators.LoginPageLocators;
+import co.uk.safebear.utils.Waits;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Wait;
 
 @RequiredArgsConstructor
 public class LoginPage {
@@ -18,24 +20,24 @@ public class LoginPage {
     }
 
     public void enterUsername(String username){
-        browser.findElement(locators.getUsernameFieldLocator()).sendKeys(username);
+         Waits.waitForElement(locators.getUsernameFieldLocator(), browser).sendKeys(username);
     }
 
     public void enterPassword(String password){
-        browser.findElement(locators.getPasswordFieldLocator()).clear();
-        browser.findElement(locators.getPasswordFieldLocator()).sendKeys(password);
+        Waits.waitForElement(locators.getPasswordFieldLocator(), browser).clear();
+        Waits.waitForElement(locators.getPasswordFieldLocator(), browser).sendKeys(password);
     }
 
     public void clickSubmitButton(){
-        browser.findElement(locators.getSubmitButtonLocator()).click();
+        Waits.waitForElement(locators.getSubmitButtonLocator(), browser).click();
     }
 
     public String getMessageText(){
-        return browser.findElement(locators.getFailedLoginMessage()).getText();
+        return Waits.waitForElement(locators.getFailedLoginMessage(), browser).getText();
     }
 
     public boolean isMessageDisplayed(){
-        return browser.findElement(locators.getFailedLoginMessage()).isDisplayed();
+        return Waits.waitForElement(locators.getFailedLoginMessage(), browser).isDisplayed();
     }
 
 
