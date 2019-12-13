@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         // This is my report
         plugin = {"json:target/cucumber-report/cucumber.json"},
         // Tags determine which tests are run
-        tags = {"not @to-do","@high-impact"}
+        tags = {"not @to-do"}
         )
 public class RunCucumberTest {
 }
